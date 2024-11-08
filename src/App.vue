@@ -8,7 +8,15 @@
             name: 'Super Kolya',
             phone: '999 88 99',
             email: 'kolya@gmail.com',
-          }
+            isFavorite: true,
+          },
+          {
+            id: 'Kolya 2',
+            name: 'Super Kolya',
+            phone: '555 55 55',
+            email: 'kolya2@gmail.com',
+            isFavorite: true,
+          },
         ]
       }
     },
@@ -26,17 +34,25 @@
     <h2>My Friends</h2>
     <ul>
       <friend-contact
-          name='Super Kolya'
-          phone='999 88 99'
-          email-address='kolya@gmail.com'
-          is-favorite="1"
+          v-for="friend in friends"
+          :key="friend.id"
+          :name='friend.name'
+          :phone='friend.phone'
+          :email-address='friend.email'
+          v-bind:is-favorite="friend.isFavorite"
       ></friend-contact>
-      <friend-contact
-          name='Super Kolya 2'
-          phone='999 88 99 3'
-          email-address='kolya@gmail.com 4'
-          is-favorite="0"
-      ></friend-contact>
+<!--      <friend-contact-->
+<!--          name='Super Kolya'-->
+<!--          phone='999 88 99'-->
+<!--          email-address='kolya@gmail.com'-->
+<!--          v-bind:is-favorite="true"-->
+<!--      ></friend-contact>-->
+<!--      <friend-contact-->
+<!--          name='Super Kolya 2'-->
+<!--          phone='999 88 99 3'-->
+<!--          email-address='kolya@gmail.com 4'-->
+<!--          :is-favorite="false"-->
+<!--      ></friend-contact>-->
     </ul>
   </section>
 </template>
