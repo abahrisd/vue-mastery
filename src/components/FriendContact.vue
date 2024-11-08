@@ -32,7 +32,7 @@ export default {
       }
     },
   },
-  emits: ['toggle-favorite'],
+  emits: ['toggle-favorite', 'delete-friend'],
   // emits: {
   //   'toggle-favorite': function (id) {
   //     if (id) {
@@ -70,6 +70,9 @@ export default {
     // in case we need to modify props from within of component
     toggleFavorite() {
       this.$emit('toggle-favorite', this.id);
+    },
+    deleteFriend() {
+      this.$emit('delete-friend', this.id);
     }
   }
 }
@@ -81,6 +84,7 @@ export default {
     <h2>{{name}} {{isFavorite ? '(Favorite)' : '' }}</h2>
     <button @click="toggleDetails">Show Details</button>
     <button @click="toggleFavorite">Toggle Favorite</button>
+    <button @click="deleteFriend">Delete</button>
     <ul v-if="detailsAreVisible">
       <li>Phone: {{phone}}</li>
       <li>Email: {{emailAddress}}</li>

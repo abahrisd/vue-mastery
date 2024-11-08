@@ -24,6 +24,17 @@
       toggleFavoriteStatus(friendId) {
         const friend = this.friends.find(f => f.id === friendId);
         friend.isFavorite = !friend.isFavorite;
+      },
+      addContact(name, phone, email) {
+        this.friends.push({
+          id: new Date().toISOString(),
+          name,
+          phone,
+          email,
+        });
+      },
+      deleteContact(friendId) {
+        this.friends = this.friends.filter(f => f.id !== friendId);
       }
     },
     computed: {
@@ -33,6 +44,9 @@
 </script>
 
 <template>
+  <section>
+    <new-friend @add-contact="addContact"></new-friend>
+  </section>
   <section>
     <h2>My Friends</h2>
     <ul>
@@ -45,19 +59,8 @@
           :email-address='friend.email'
           v-bind:is-favorite="friend.isFavorite"
           v-on:toggle-favorite="toggleFavoriteStatus"
+          @delete-friend="deleteContact"
       ></friend-contact>
-<!--      <friend-contact-->
-<!--          name='Super Kolya'-->
-<!--          phone='999 88 99'-->
-<!--          email-address='kolya@gmail.com'-->
-<!--          v-bind:is-favorite="true"-->
-<!--      ></friend-contact>-->
-<!--      <friend-contact-->
-<!--          name='Super Kolya 2'-->
-<!--          phone='999 88 99 3'-->
-<!--          email-address='kolya@gmail.com 4'-->
-<!--          :is-favorite="false"-->
-<!--      ></friend-contact>-->
     </ul>
   </section>
 </template>
