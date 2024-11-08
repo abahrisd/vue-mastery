@@ -21,7 +21,10 @@
       }
     },
     methods: {
-
+      toggleFavoriteStatus(friendId) {
+        const friend = this.friends.find(f => f.id === friendId);
+        friend.isFavorite = !friend.isFavorite;
+      }
     },
     computed: {
 
@@ -36,10 +39,12 @@
       <friend-contact
           v-for="friend in friends"
           :key="friend.id"
+          :id="friend.id"
           :name='friend.name'
           :phone='friend.phone'
           :email-address='friend.email'
           v-bind:is-favorite="friend.isFavorite"
+          v-on:toggle-favorite="toggleFavoriteStatus"
       ></friend-contact>
 <!--      <friend-contact-->
 <!--          name='Super Kolya'-->

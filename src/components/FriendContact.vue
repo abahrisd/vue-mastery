@@ -7,6 +7,10 @@ export default {
   //   'isFavorite',
   // ],
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -22,7 +26,7 @@ export default {
       default: function() {
         return false;
       },
-      // default: '0',
+      // default: '0',isFavorite
       validator: function(value) {
         return ['1', '0'].includes(value);
       }
@@ -37,7 +41,7 @@ export default {
       //   phone: '999 88 99',
       //   email: 'kolya@gmail.com',
       // }
-      friendIsFavorite: this.isFavorite,
+      // friendIsFavorite: this.isFavorite,
     }
   },
   methods: {
@@ -54,8 +58,7 @@ export default {
     // }
     // in case we need to modify props from within of component
     toggleFavorite() {
-      // this.$emit();
-      this.friendIsFavorite = !this.friendIsFavorite;
+      this.$emit('toggle-favorite', this.id);
     }
   }
 }
@@ -64,7 +67,7 @@ export default {
 
 <template>
   <li>
-    <h2>{{name}} {{friendIsFavorite ? '(Favorite)' : '' }}</h2>
+    <h2>{{name}} {{isFavorite ? '(Favorite)' : '' }}</h2>
     <button @click="toggleDetails">Show Details</button>
     <button @click="toggleFavorite">Toggle Favorite</button>
     <ul v-if="detailsAreVisible">
