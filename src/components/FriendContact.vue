@@ -1,11 +1,33 @@
 <script>
 export default {
-  props: [
-    'name',
-    'phone',
-    'emailAddress',
-    'isFavorite',
-  ],
+  // props: [
+  //   'name',
+  //   'phone',
+  //   'emailAddress',
+  //   'isFavorite',
+  // ],
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    emailAddress: String,
+    isFavorite: {
+      type: String,
+      required: false,
+      default: function() {
+        return '0';
+      },
+      // default: '0',
+      validator: function(value) {
+        return ['1', '0'].includes(value);
+      }
+    },
+  },
   data() {
     return {
       detailsAreVisible: false,
