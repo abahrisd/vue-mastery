@@ -4,21 +4,39 @@ export default {
     'name',
     'phone',
     'emailAddress',
+    'isFavorite',
   ],
-  // data() {
-  //   return {
-  //     detailsAreVisible: false,
-  //     friend: {
-  //       id: 'kolya',
-  //       name: 'Super Kolya',
-  //       phone: '999 88 99',
-  //       email: 'kolya@gmail.com',
-  //     }
-  //   }
-  // },
+  data() {
+    return {
+      detailsAreVisible: false,
+      // friend: {
+      //   id: 'kolya',
+      //   name: 'Super Kolya',
+      //   phone: '999 88 99',
+      //   email: 'kolya@gmail.com',
+      // }
+      friendIsFavorite: this.isFavorite,
+    }
+  },
   methods: {
     toggleDetails() {
       this.detailsAreVisible = !this.detailsAreVisible;
+    },
+    // Bad, breaks unidirectional data flow
+    // toggleFavorite() {
+    //   if (this.isFavorite === '1') {
+    //     this.isFavorite = '0'
+    //   } else {
+    //     this.isFavorite = '1';
+    //   }
+    // }
+    // in case we need to modify props from within of component
+    toggleFavorite() {
+      if (this.friendIsFavorite === '1') {
+        this.friendIsFavorite = '0'
+      } else {
+        this.friendIsFavorite = '1';
+      }
     }
   }
 }
@@ -27,8 +45,9 @@ export default {
 
 <template>
   <li>
-    <h2>{{name}}</h2>
+    <h2>{{name}} {{friendIsFavorite === '1' ? '(Favorite)' : '' }}</h2>
     <button @click="toggleDetails">Show Details</button>
+    <button @click="toggleFavorite">Toggle Favorite</button>
     <ul v-if="detailsAreVisible">
       <li>Phone: {{phone}}</li>
       <li>Email: {{emailAddress}}</li>
