@@ -98,8 +98,8 @@ export default {
       <fancy-text-local />
     </ul>
     <Slots>
-      <template v-slot:default>Base slot data</template>
-      <template v-slot:header>Header</template>
+      <template #default>Base slot data</template>
+      <template v-slot:header v-if="detailsAreVisible">Header</template>
     </Slots>
   </li>
 </template>

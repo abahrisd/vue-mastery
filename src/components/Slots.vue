@@ -1,14 +1,19 @@
 <script>
 export default {
-  name: "Slots"
+  name: "Slots",
+  mounted() {
+    console.log('slots',this.$slots.header());
+  }
 }
 </script>
 
 <template>
 <div>
-  <header>
+  <header v-if="$slots.header">
     <div>And the header is:</div>
-    <slot name="header"></slot>
+    <slot name="header">
+      Default header
+    </slot>
   </header>
   <span class="slot-data">
     <slot></slot>
