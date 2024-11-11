@@ -2,6 +2,7 @@
   export default {
     data() {
       return {
+        fancyText: 'Super fancy text',
         friends: [
           {
             id: 'Kolya',
@@ -40,6 +41,11 @@
     computed: {
 
     },
+    provide() {
+      return {
+        fancyText: this.fancyText,
+      }
+    }
   }
 </script>
 

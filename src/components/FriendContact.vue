@@ -88,6 +88,7 @@ export default {
     <ul v-if="detailsAreVisible">
       <li>Phone: {{phone}}</li>
       <li>Email: {{emailAddress}}</li>
+      <fancy-text />
     </ul>
   </li>
 </template>
