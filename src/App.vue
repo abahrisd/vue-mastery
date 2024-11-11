@@ -1,5 +1,10 @@
 <script>
+  import MyGoals from "@/components/MyGoals.vue";
+
   export default {
+    components: {
+      MyGoals,
+    },
     data() {
       return {
         fancyText: 'Super fancy text',
@@ -67,6 +72,11 @@
           v-on:toggle-favorite="toggleFavoriteStatus"
           @delete-friend="deleteContact"
       ></friend-contact>
+      <my-goals>
+        <template #default="slotProps">
+          <h2>{{slotProps.item}}</h2>
+        </template>
+      </my-goals>
     </ul>
   </section>
 </template>
