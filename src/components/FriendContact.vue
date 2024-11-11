@@ -1,4 +1,6 @@
 <script>
+import FancyText from './FancyText.vue';
+
 export default {
   // props: [
   //   'name',
@@ -6,6 +8,9 @@ export default {
   //   'emailAddress',
   //   'isFavorite',
   // ],
+  components: {
+    'fancy-text-local': FancyText,
+  },
   props: {
     id: {
       type: String,
@@ -88,7 +93,7 @@ export default {
     <ul v-if="detailsAreVisible">
       <li>Phone: {{phone}}</li>
       <li>Email: {{emailAddress}}</li>
-      <fancy-text />
+      <fancy-text-local />
     </ul>
   </li>
 </template>
