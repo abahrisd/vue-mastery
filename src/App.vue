@@ -1,12 +1,17 @@
 <script>
   import MyGoals from "@/components/MyGoals.vue";
+  import ActiveGoals from "@/components/ActiveGoals.vue";
+  import ManageGoals from "@/components/ManageGoals.vue";
 
   export default {
     components: {
       MyGoals,
+      ActiveGoals,
+      ManageGoals
     },
     data() {
       return {
+        selectedComponent: 'active-goals',
         fancyText: 'Super fancy text',
         friends: [
           {
@@ -41,6 +46,9 @@
       },
       deleteContact(friendId) {
         this.friends = this.friends.filter(f => f.id !== friendId);
+      },
+      setSelectedComponent(cpmName) {
+        this.selectedComponent = cpmName;
       }
     },
     computed: {
@@ -75,6 +83,12 @@
       <my-goals #default="slotProps">
           <h2>{{slotProps.item}}</h2>
       </my-goals>
+
+      <button @click="setSelectedComponent('active-goals')">Active goals</button>
+      <button @click="setSelectedComponent('manage-goals')">Manage goals</button>
+      <keep-alive>
+        <component :is="selectedComponent"></component>
+      </keep-alive>
     </ul>
   </section>
 </template>
