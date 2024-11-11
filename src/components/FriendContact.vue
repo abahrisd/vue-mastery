@@ -1,5 +1,6 @@
 <script>
 import FancyText from './FancyText.vue';
+import Slots from "@/components/Slots.vue";
 
 export default {
   // props: [
@@ -10,6 +11,7 @@ export default {
   // ],
   components: {
     'fancy-text-local': FancyText,
+    Slots,
   },
   props: {
     id: {
@@ -95,6 +97,10 @@ export default {
       <li>Email: {{emailAddress}}</li>
       <fancy-text-local />
     </ul>
+    <Slots>
+      <template v-slot:default>Base slot data</template>
+      <template v-slot:header>Header</template>
+    </Slots>
   </li>
 </template>
 
