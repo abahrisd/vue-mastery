@@ -2,7 +2,7 @@
 export default {
   name: "Slots",
   mounted() {
-    console.log('slots',this.$slots.header());
+    console.log('slots',this.$slots.header);
   }
 }
 </script>
