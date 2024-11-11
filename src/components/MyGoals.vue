@@ -3,7 +3,7 @@ export default {
   name: "MyGoals",
   data() {
     return {
-      goals: ['Goal 1', 'goal 2'],
+      goals: ['Goal 1', 'Goal 2'],
     }
   }
 }

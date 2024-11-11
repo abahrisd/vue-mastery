@@ -72,10 +72,8 @@
           v-on:toggle-favorite="toggleFavoriteStatus"
           @delete-friend="deleteContact"
       ></friend-contact>
-      <my-goals>
-        <template #default="slotProps">
+      <my-goals #default="slotProps">
           <h2>{{slotProps.item}}</h2>
-        </template>
       </my-goals>
     </ul>
   </section>
