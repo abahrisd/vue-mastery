@@ -2,12 +2,14 @@
   import MyGoals from "@/components/MyGoals.vue";
   import ActiveGoals from "@/components/ActiveGoals.vue";
   import ManageGoals from "@/components/ManageGoals.vue";
+  import TheForm from "@/components/form/TheForm.vue";
 
   export default {
     components: {
       MyGoals,
       ActiveGoals,
-      ManageGoals
+      ManageGoals,
+      TheForm,
     },
     data() {
       return {
@@ -91,6 +93,9 @@
       </keep-alive>
     </ul>
   </section>
+
+  <the-form/>
+
 </template>
 
 <style scoped>
