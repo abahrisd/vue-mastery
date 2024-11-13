@@ -3,6 +3,8 @@
   import ActiveGoals from "@/components/ActiveGoals.vue";
   import ManageGoals from "@/components/ManageGoals.vue";
   import TheForm from "@/components/form/TheForm.vue";
+  import LearningSurvey from "@/components/work-w-back/LearningSurvey.vue";
+  import UserExperiences from "@/components/work-w-back/UserExperiences.vue";
 
   export default {
     components: {
@@ -10,9 +12,12 @@
       ActiveGoals,
       ManageGoals,
       TheForm,
+      LearningSurvey,
+      UserExperiences,
     },
     data() {
       return {
+        // savedSurveyResults: [],
         selectedComponent: 'active-goals',
         fancyText: 'Super fancy text',
         friends: [
@@ -51,7 +56,17 @@
       },
       setSelectedComponent(cpmName) {
         this.selectedComponent = cpmName;
-      }
+      },
+      // back
+      // storeSurvey(surveyData) {
+      //   const surveyResult = {
+      //     name: surveyData.userName,
+      //     rating: surveyData.rating,
+      //     id: new Date().toISOString(),
+      //   };
+      //   this.savedSurveyResults.push(surveyResult);
+      //   console.log(surveyResult);
+      // },
     },
     computed: {
 
@@ -96,6 +111,10 @@
 
   <the-form/>
 
+  <div>
+    <learning-survey></learning-survey>
+    <user-experiences></user-experiences>
+  </div>
 </template>
 
 <style scoped>
