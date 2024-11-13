@@ -33,6 +33,7 @@
           <base-button>Submit</base-button>
         </div>
       </form>
+      <p v-if="error">{{error}}</p>
     </base-card>
   </section>
 </template>
@@ -47,6 +48,7 @@ export default {
     return {
       enteredName: '',
       chosenRating: null,
+      error: null,
       invalidInput: false,
     };
   },
@@ -73,6 +75,16 @@ export default {
           name: this.enteredName,
           rating: this.chosenRating,
         }),
+      })
+      .then((response) => {
+        if (response.ok) {
+          //
+        } else {
+          throw new Error('Unable to save data')
+        }
+      })
+      .catch(error => {
+        this.error = error.message;
       });
 
       this.enteredName = '';
