@@ -21,6 +21,7 @@ const router = createRouter({
             component: SurveyLayout,
             children: [
                 {
+                    name: 'back-friends',
                     path: 'friends',
                     component: FriendsList,
                 }
