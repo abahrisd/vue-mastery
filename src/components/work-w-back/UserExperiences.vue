@@ -5,7 +5,10 @@
       <div>
         <base-button @click="loadExpiriences">Load Submitted Experiences</base-button>
       </div>
-      <ul>
+      <p v-if="isLoading">Loading...</p>
+      <p v-else-if="error">{{error}}</p>
+      <p v-else-if="!isLoading && (!results || results.length === 0)">No expiriences was found.</p>
+      <ul v-else-if="!isLoading && results && results.length > 0">
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -27,10 +30,14 @@ export default {
   data() {
     return {
       results: [],
+      isLoading: false,
+      error: null,
     }
   },
   methods: {
     loadExpiriences() {
+      this.isLoading = true;
+      this.error = null;
 
       fetch('https://vue-http-e0b15-default-rtdb.firebaseio.com/surveys.json').then(response => {
         if (response.ok) {
@@ -50,8 +57,16 @@ export default {
         console.log('results',results);
 
         this.results = results;
+      }).catch((error) => {
+        this.error = 'Failed to fetch data';
+        console.log('Loading error',error)
+      }).finally(() => {
+        this.isLoading = false;
       });
     }
+  },
+  mounted() {
+    this.loadExpiriences();
   },
   components: {
     BaseButton,
