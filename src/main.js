@@ -19,13 +19,15 @@ const router = createRouter({
         }, {
             path: '/back',
             component: SurveyLayout,
-        }, {
-            path: '/friends',
-            component: FriendsList,
+            children: [
+                {
+                    path: 'friends',
+                    component: FriendsList,
+                }
+            ]
         }, {
             path: '/:catchAll(.*)',
             component: NotFound,
-
         }
     ],
     history: createWebHistory(),

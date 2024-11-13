@@ -14,6 +14,8 @@ export default {
     <learning-survey></learning-survey>
     <user-experiences></user-experiences>
   </div>
+  <router-link to="/back/friends"> Friends</router-link>
+  <router-view></router-view>
 </template>
 
 <style scoped>
