@@ -4,7 +4,16 @@ import LearningSurvey from "@/components/work-w-back/LearningSurvey.vue";
 
 export default {
   name: "SurveyLayout",
-  components: {LearningSurvey, UserExperiences}
+  components: {LearningSurvey, UserExperiences},
+  computed: {
+    friendsLink() {
+      return {
+        name: 'back-friends',
+        // params: {...}
+        // query: {...}
+      }
+    }
+  }
 }
 </script>
 
@@ -14,7 +23,7 @@ export default {
     <learning-survey></learning-survey>
     <user-experiences></user-experiences>
   </div>
-  <router-link to="/back/friends"> Friends</router-link>
+  <router-link :to="friendsLink"> Friends</router-link>
   <router-view></router-view>
 </template>
 
