@@ -42,7 +42,6 @@ const router = createRouter({
     history: createWebHistory(),
     linkActiveClass: 'active',
     scrollBehavior: (to, from, savedPosition) => {
-        console.log('scroll',{ to, from, savedPosition });
         if (savedPosition) {
             return savedPosition;
         }
@@ -53,6 +52,13 @@ const router = createRouter({
         }
     },
 });
+
+router.beforeEach((to, from, next) => {
+    console.log('router',{to, from});
+    next();
+    // next(false);
+    // next({name: 'my-route-name', params: {...}});
+})
 const app = createApp(App);
 
 app.use(router);

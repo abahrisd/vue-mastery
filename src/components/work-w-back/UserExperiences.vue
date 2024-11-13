@@ -54,12 +54,9 @@ export default {
           })
         }
 
-        console.log('results',results);
-
         this.results = results;
       }).catch((error) => {
         this.error = 'Failed to fetch data';
-        console.log('Loading error',error)
       }).finally(() => {
         this.isLoading = false;
       });
