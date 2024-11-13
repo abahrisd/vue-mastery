@@ -36,6 +36,8 @@ export default {
       this.confirm = false;
       console.log('rating',this.rating);
       this.rating = null;
+
+      this.$router.push('/back');
     },
     validateInput() {
       if (this.userName === '') {

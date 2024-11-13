@@ -15,6 +15,7 @@ const router = createRouter({
         component: SurveyLayout,
     },],
     history: createWebHistory(),
+    linkActiveClass: 'active',
 });
 const app = createApp(App);
 
