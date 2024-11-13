@@ -4,6 +4,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import TheForm from "@/components/form/TheForm.vue";
 import SurveyLayout from "@/components/work-w-back/SurveyLayout.vue";
 import FriendsList from "@/components/FriendsList.vue";
+import NotFound from "@/components/nav/NotFound.vue";
 
 const router = createRouter({
     routes: [
@@ -21,7 +22,11 @@ const router = createRouter({
         }, {
             path: '/friends',
             component: FriendsList,
-        },
+        }, {
+            path: '/:catchAll(.*)',
+            component: NotFound,
+
+        }
     ],
     history: createWebHistory(),
     linkActiveClass: 'active',
