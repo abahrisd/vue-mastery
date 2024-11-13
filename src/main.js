@@ -41,6 +41,17 @@ const router = createRouter({
     ],
     history: createWebHistory(),
     linkActiveClass: 'active',
+    scrollBehavior: (to, from, savedPosition) => {
+        console.log('scroll',{ to, from, savedPosition });
+        if (savedPosition) {
+            return savedPosition;
+        }
+
+        return {
+            left: 0,
+            top: 0,
+        }
+    },
 });
 const app = createApp(App);
 
