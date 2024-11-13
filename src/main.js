@@ -8,6 +8,11 @@ import FriendsList from "@/components/FriendsList.vue";
 const router = createRouter({
     routes: [
         {
+            path: '/',
+            redirect: '/form',
+        },
+        {
+            // alias: '/',
             path: '/form',
             component: TheForm,
         }, {
