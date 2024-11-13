@@ -37,7 +37,7 @@ export default {
       console.log('rating',this.rating);
       this.rating = null;
 
-      this.$router.push('/back');
+      // this.$router.push('/back');
     },
     validateInput() {
       if (this.userName === '') {
@@ -45,7 +45,19 @@ export default {
       } else {
         this.userNameValidity = 'valid';
       }
-    }
+    },
+  },
+  beforeRouteEnter(to, from, next) {
+    //
+    next();
+  },
+  beforeRouteUpdate(to, from, next) {
+    // load data here if params changed
+    next();
+  },
+  beforeRouteLeave(to, from, next) {
+    // check here that form is saved or submitted etc
+    next();
   }
 }
 </script>
