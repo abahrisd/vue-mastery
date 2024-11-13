@@ -5,6 +5,8 @@ import TheForm from "@/components/form/TheForm.vue";
 import SurveyLayout from "@/components/work-w-back/SurveyLayout.vue";
 import FriendsList from "@/components/FriendsList.vue";
 import NotFound from "@/components/nav/NotFound.vue";
+import FormFooter from "@/components/form/FormFooter.vue";
+import BackFooter from "@/components/work-w-back/BackFooter.vue";
 
 const router = createRouter({
     routes: [
@@ -15,10 +17,16 @@ const router = createRouter({
         {
             // alias: '/',
             path: '/form',
-            component: TheForm,
+            components: {
+                default: TheForm,
+                footer: FormFooter,
+            },
         }, {
             path: '/back',
-            component: SurveyLayout,
+            components: {
+                default: SurveyLayout,
+                footer: BackFooter,
+            },
             children: [
                 {
                     name: 'back-friends',
