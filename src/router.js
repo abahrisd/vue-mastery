@@ -5,6 +5,7 @@ import SurveyLayout from "@/components/work-w-back/SurveyLayout.vue";
 import BackFooter from "@/components/work-w-back/BackFooter.vue";
 import FriendsList from "@/components/FriendsList.vue";
 import NotFound from "@/components/nav/NotFound.vue";
+import AnimationsLayout from "@/components/animations/AnimationsLayout.vue";
 
 const router = createRouter({
     routes: [
@@ -19,6 +20,12 @@ const router = createRouter({
             components: {
                 default: TheForm,
                 footer: FormFooter,
+            },
+        },
+        {
+            path: '/animations',
+            components: {
+                default: AnimationsLayout,
             },
         }, {
             path: '/back',

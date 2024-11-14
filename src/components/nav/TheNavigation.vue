@@ -9,6 +9,9 @@
           <router-link to="/back">Back</router-link>
         </li>
         <li>
+          <router-link to="/animations">Animations</router-link>
+        </li>
+        <li>
 <!--          <router-link to="/friends">Friends list</router-link>-->
         </li>
       </ul>
