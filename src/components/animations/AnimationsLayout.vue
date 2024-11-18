@@ -6,13 +6,15 @@
   <div class="container">
 <!--    <transition enter-to-class="..." enter-from-class="..." enter-active-class="...">-->
     <transition
-        name="para"
+        :css="false"
         @before-enter="beforeEnter"
         @before-leave="beforeLeave"
         @enter="enter"
         @after-enter="afterEnter"
         @leave="leave"
         @after-leave="afterLeave"
+        @enter-cancelled="enterCancel"
+        @leave-cancelled="leaveCancel"
     >
       <p v-if="paraIsVisible">This is only sometimes visible...</p>
     </transition>
@@ -44,23 +46,57 @@ export default {
       dialogIsVisible: false,
       paraIsVisible: false,
       usersAreVisible: false,
+      enterInterval: null,
+      leaveInterval: null,
     };
   },
   methods: {
     beforeEnter(el) {
       console.log('beforeenter!',el)
+      el.style.opacity = 0;
+    },
+    enter(el, done) {
+      console.log('enter!', el)
+      let round = 1;
+
+      this.enterInterval = setInterval(() => {
+        el.style.opacity = round*0.01;
+        round++;
+
+        if (round > 100) {
+          clearInterval(this.enterInterval);
+          done();
+        }
+      }, 20);
+    },
+    enterCancel(el) {
+      console.log('enterCancel',el)
+      clearInterval(this.enterInterval);
     },
     beforeLeave(el) {
       console.log('beforeLeave!',el)
-    },
-    enter(el) {
-      console.log('enter!', el)
+      el.style.opacity = 1;
     },
     afterEnter(el) {
       console.log('afterEnter!', el)
     },
-    leave(el) {
-      console.log('leave!', el)
+    leave(el, done) {
+      console.log('leave!', el);
+      let round = 1;
+
+      this.leaveInterval = setInterval(() => {
+        el.style.opacity = 1 - round*0.01;
+        round++;
+
+        if (round > 100) {
+          clearInterval(this.leaveInterval);
+          done();
+        }
+      }, 20);
+    },
+    leaveCancel(el) {
+      console.log('leaveCancel',el)
+      clearInterval(this.leaveInterval);
     },
     afterLeave(el) {
       console.log('afterLeave!', el)
@@ -134,35 +170,15 @@ button:active {
   animation: slide-scale 0.3s ease forwards;
 }
 
-.v-enter-from {
-  /*opacity: 0;
-  transform: translateY(-30px);*/
-}
-
-.para-enter-active {
-  animation: slide-scale 2s ease-out;
-  /*transition: all 0.3s ease-in-out;*/
-}
-
-.v-enter-to {
-  /*opacity: 1;
-  transform: translateY(0);*/
-}
-
-.v-leave-from {
-  /*opacity: 1;
-  transform: translateY(0);*/
+/*.para-enter-active {
+  animation: slide-scale 0.3s ease-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .para-leave-active {
   animation: slide-scale 0.3s ease-out;
-  /*transition: all 0.3s ease-in-out;*/
-}
-
-.v-leave-to {
-  /*opacity: 0;
-  transform: translateY(-30px);*/
-}
+  transition: all 0.3s ease-in-out;
+}*/
 
 .fade-button-enter-from, .fade-button-leave-to {
   opacity: 0;
