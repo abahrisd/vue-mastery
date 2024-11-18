@@ -5,7 +5,15 @@
   </div>
   <div class="container">
 <!--    <transition enter-to-class="..." enter-from-class="..." enter-active-class="...">-->
-    <transition name="para">
+    <transition
+        name="para"
+        @before-enter="beforeEnter"
+        @before-leave="beforeLeave"
+        @enter="enter"
+        @after-enter="afterEnter"
+        @leave="leave"
+        @after-leave="afterLeave"
+    >
       <p v-if="paraIsVisible">This is only sometimes visible...</p>
     </transition>
     <button @click="toggleParagraph">Toggle Paragraph</button>
@@ -39,6 +47,24 @@ export default {
     };
   },
   methods: {
+    beforeEnter(el) {
+      console.log('beforeenter!',el)
+    },
+    beforeLeave(el) {
+      console.log('beforeLeave!',el)
+    },
+    enter(el) {
+      console.log('enter!', el)
+    },
+    afterEnter(el) {
+      console.log('afterEnter!', el)
+    },
+    leave(el) {
+      console.log('leave!', el)
+    },
+    afterLeave(el) {
+      console.log('afterLeave!', el)
+    },
     toggleParagraph() {
       this.paraIsVisible = !this.paraIsVisible;
     },
@@ -114,7 +140,7 @@ button:active {
 }
 
 .para-enter-active {
-  animation: slide-scale 0.3s ease-out;
+  animation: slide-scale 2s ease-out;
   /*transition: all 0.3s ease-in-out;*/
 }
 
