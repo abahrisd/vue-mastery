@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router"
-import TheForm from "@/components/form/TheForm.vue"
-import FormFooter from "@/components/form/FormFooter.vue"
-import SurveyLayout from "@/components/work-w-back/SurveyLayout.vue"
-import BackFooter from "@/components/work-w-back/BackFooter.vue"
-import FriendsList from "@/components/FriendsList.vue"
-import NotFound from "@/components/nav/NotFound.vue"
-import AnimationsLayout from "@/components/animations/AnimationsLayout.vue"
-import VuexLayout from "@/components/vuex/VuexLayout.vue"
+
+const TheForm = () => import("./components/form/TheForm.vue");
+const FormFooter = () => import("./components/form/FormFooter.vue");
+const SurveyLayout = () => import("./components/work-w-back/SurveyLayout.vue");
+const BackFooter = () => import("./components/work-w-back/BackFooter.vue");
+const FriendsList = () => import("./components/FriendsList.vue");
+const NotFound = () => import("./components/nav/NotFound.vue");
+const AnimationsLayout = () => import("./components/animations/AnimationsLayout.vue");
+const VuexLayout = () => import("./components/vuex/VuexLayout.vue");
 
 const router = createRouter({
   routes: [
