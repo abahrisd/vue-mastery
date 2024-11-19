@@ -34,6 +34,13 @@ const counterModule = {
     },
   },
   getters: {
+    // Will not work coz state in module is local, instead use rootState
+    // testAuth(state) {
+    //   return state.isLoggedIn;
+    // },
+    testAuth(state, getters, rootState, rootGetters) {
+      return rootState.isLoggedIn;
+    },
     finalCounter(state, getters) {
       return state.counter * 2
     },

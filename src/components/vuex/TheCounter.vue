@@ -6,7 +6,7 @@ export default {
   name: "TheCounter",
   components: {BaseContainer},
   computed: {
-    ...mapGetters(['finalCounter']),
+    ...mapGetters(['finalCounter', 'testAuth']),
     // counter() {
     //   return this.$store.getters.finalCounter;
     // }
@@ -16,6 +16,7 @@ export default {
 
 <template>
   <h3>{{finalCounter}}</h3>
+  <h2>Is auth: {{testAuth ? 'YES' : 'NO'}}</h2>
 </template>
 
 <style scoped>
