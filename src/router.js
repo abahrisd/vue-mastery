@@ -6,6 +6,7 @@ import BackFooter from "@/components/work-w-back/BackFooter.vue";
 import FriendsList from "@/components/FriendsList.vue";
 import NotFound from "@/components/nav/NotFound.vue";
 import AnimationsLayout from "@/components/animations/AnimationsLayout.vue";
+import VuexLayout from "@/components/vuex/VuexLayout.vue";
 
 const router = createRouter({
     routes: [
@@ -26,6 +27,12 @@ const router = createRouter({
             path: '/animations',
             components: {
                 default: AnimationsLayout,
+            },
+        },
+        {
+            path: '/vuex',
+            components: {
+                default: VuexLayout,
             },
         }, {
             path: '/back',
