@@ -1,41 +1,44 @@
 <template>
-  <div class="container">
-    <users-list></users-list>
+  <div>
+    <div class="container">
+      <users-list></users-list>
+    </div>
+    <div class="container">
+      <div :class="{animate: animatedBlock}" class="block"></div>
+      <button @click="animateBlock">Animate</button>
+    </div>
+    <div class="container">
+      <!--    <transition enter-to-class="..." enter-from-class="..." enter-active-class="...">-->
+      <transition
+          :css="false"
+          @before-enter="beforeEnter"
+          @before-leave="beforeLeave"
+          @enter="enter"
+          @after-enter="afterEnter"
+          @leave="leave"
+          @after-leave="afterLeave"
+          @enter-cancelled="enterCancel"
+          @leave-cancelled="leaveCancel"
+      >
+        <p v-if="paraIsVisible">This is only sometimes visible...</p>
+      </transition>
+      <button @click="toggleParagraph">Toggle Paragraph</button>
+    </div>
+    <div class="container">
+      <transition name="fade-button" mode="out-in">
+        <button @click="showUsrs" v-if="!usersAreVisible">Show Users</button>
+        <button @click="hideUsrs" v-else>Hide Users</button>
+      </transition>
+    </div>
+    <base-modal @close="hideDialog" :open="dialogIsVisible">
+      <p>This is a test dialog!</p>
+      <button @click="hideDialog">Close it!</button>
+    </base-modal>
+    <div class="container">
+      <button @click="showDialog">Show Dialog</button>
+    </div>
   </div>
-  <div class="container">
-    <div :class="{animate: animatedBlock}" class="block"></div>
-    <button @click="animateBlock">Animate</button>
-  </div>
-  <div class="container">
-<!--    <transition enter-to-class="..." enter-from-class="..." enter-active-class="...">-->
-    <transition
-        :css="false"
-        @before-enter="beforeEnter"
-        @before-leave="beforeLeave"
-        @enter="enter"
-        @after-enter="afterEnter"
-        @leave="leave"
-        @after-leave="afterLeave"
-        @enter-cancelled="enterCancel"
-        @leave-cancelled="leaveCancel"
-    >
-      <p v-if="paraIsVisible">This is only sometimes visible...</p>
-    </transition>
-    <button @click="toggleParagraph">Toggle Paragraph</button>
-  </div>
-  <div class="container">
-    <transition name="fade-button" mode="out-in">
-      <button @click="showUsrs" v-if="!usersAreVisible">Show Users</button>
-      <button @click="hideUsrs" v-else>Hide Users</button>
-    </transition>
-  </div>
-  <base-modal @close="hideDialog" :open="dialogIsVisible">
-    <p>This is a test dialog!</p>
-    <button @click="hideDialog">Close it!</button>
-  </base-modal>
-  <div class="container">
-    <button @click="showDialog">Show Dialog</button>
-  </div>
+
 </template>
 
 <script>
