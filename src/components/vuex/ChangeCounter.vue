@@ -3,10 +3,14 @@ export default {
   name: "ChangeCounter",
   methods: {
     addOne() {
-      this.$store.commit({
-        type: 'increase',
+      this.$store.dispatch({
+        type: 'increaseAction',
         value: 2,
       });
+      // this.$store.commit({
+      //   type: 'increase',
+      //   value: 2,
+      // });
     }
   }
 }
