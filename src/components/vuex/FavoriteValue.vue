@@ -3,7 +3,7 @@ export default {
   name: "FavoriteValue",
   computed: {
     counter() {
-      return this.$store.getters.normalizedCounter;
+      return this.$store.getters['counter/normalizedCounter'];
     }
   },
 }

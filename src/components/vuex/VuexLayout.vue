@@ -16,7 +16,7 @@ export default {
     addOne() {
       // this.$store.commit('increase', {value: 10});
       this.$store.dispatch({
-        type: 'increaseAction',
+        type: 'counter/increaseAction',
         value: 10,
       });
     }

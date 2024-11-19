@@ -4,7 +4,7 @@ import {mapActions} from "vuex";
 export default {
   name: "ChangeCounter",
   methods: {
-    ...mapActions(['increaseAction']),
+    ...mapActions('counter', ['increaseAction']),
   }
 }
 </script>

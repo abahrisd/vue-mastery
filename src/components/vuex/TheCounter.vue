@@ -6,7 +6,7 @@ export default {
   name: "TheCounter",
   components: {BaseContainer},
   computed: {
-    ...mapGetters(['finalCounter', 'testAuth']),
+    ...mapGetters('counter', ['finalCounter', 'testAuth']),
     // counter() {
     //   return this.$store.getters.finalCounter;
     // }

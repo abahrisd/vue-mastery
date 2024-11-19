@@ -4,6 +4,7 @@ import router from "@/router.js"
 import { createStore } from "vuex"
 
 const counterModule = {
+  namespaced: true,
   state() {
     return {
       counter: 0,
