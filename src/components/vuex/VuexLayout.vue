@@ -1,13 +1,14 @@
 <script>
 import BaseContainer from "@/components/UI/BaseContainer.vue";
 import TheCounter from "@/components/vuex/TheCounter.vue";
+import ChangeCounter from "@/components/vuex/ChangeCounter.vue";
 
 export default {
   name: "VuexLayout",
-  components: {TheCounter, BaseContainer},
+  components: {ChangeCounter, TheCounter, BaseContainer},
   methods: {
     addOne() {
-      this.$store.state.counter++;
+      this.$store.commit('increase', {value: 10});
     }
   }
 }
@@ -16,7 +17,8 @@ export default {
 <template>
   <base-container title="Vuex">
     <the-counter></the-counter>
-    <button @click="addOne">Add 1</button>
+    <button @click="addOne">Add 10</button>
+    <change-counter></change-counter>
   </base-container>
 </template>
 
