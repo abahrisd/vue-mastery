@@ -1,20 +1,21 @@
 <script>
 import BaseContainer from "@/components/UI/BaseContainer.vue";
+import { mapGetters } from 'vuex';
 
 export default {
   name: "TheCounter",
   components: {BaseContainer},
   computed: {
-    counter() {
-      return this.$store.getters.finalCounter;
-    }
+    ...mapGetters(['finalCounter']),
+    // counter() {
+    //   return this.$store.getters.finalCounter;
+    // }
   },
 }
 </script>
 
 <template>
-
-  <h3>{{counter}}</h3>
+  <h3>{{finalCounter}}</h3>
 </template>
 
 <style scoped>

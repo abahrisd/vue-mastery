@@ -1,23 +1,16 @@
 <script>
+import {mapActions} from "vuex";
+
 export default {
   name: "ChangeCounter",
   methods: {
-    addOne() {
-      this.$store.dispatch({
-        type: 'increaseAction',
-        value: 2,
-      });
-      // this.$store.commit({
-      //   type: 'increase',
-      //   value: 2,
-      // });
-    }
+    ...mapActions(['increaseAction']),
   }
 }
 </script>
 
 <template>
-  <button @click="addOne">Add 2</button>
+  <button @click="increaseAction({value: 2})">Add 2</button>
 </template>
 
 <style scoped>

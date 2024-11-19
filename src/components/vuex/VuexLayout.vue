@@ -9,7 +9,11 @@ export default {
   components: {FavoriteValue, ChangeCounter, TheCounter, BaseContainer},
   methods: {
     addOne() {
-      this.$store.commit('increase', {value: 10});
+      // this.$store.commit('increase', {value: 10});
+      this.$store.dispatch({
+        type: 'increaseAction',
+        value: 10,
+      });
     }
   }
 }
