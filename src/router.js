@@ -16,7 +16,7 @@ const router = createRouter({
         {
             // alias: '/',
             path: '/form',
-            meta: {needsAuth: true},
+            // meta: {needsAuth: true},
             components: {
                 default: TheForm,
                 footer: FormFooter,
