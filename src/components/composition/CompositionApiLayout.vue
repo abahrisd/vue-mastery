@@ -1,8 +1,10 @@
 <script>
-import {reactive, ref, isReactive, isRef, toRefs} from "vue";
+import {reactive, ref, isReactive, isRef, toRefs, computed} from "vue";
+import UserData from "@/components/composition/UserData.vue";
 
 export default {
   name: "CompositionApiLayout",
+  components: {UserData},
   setup() {
     // const userName = ref('Samir');
     // const age = ref(36);
@@ -37,6 +39,9 @@ export default {
     const setLastName = () => {
       lastName.value = lastNameInput.value.value;
     }
+    const userName = computed(() => {
+      return firstName.value + ' ' + lastName.value;
+    });
 
     return {
       // userName: user.value.name,
@@ -48,17 +53,16 @@ export default {
       setLastName,
       firstName,
       lastName,
+      userName,
       lastNameInput,
     };
-
   }
 }
 </script>
 
 <template>
   <section class="cont">
-    <h2>{{ firstName }} {{lastName}}</h2>
-    <h3>{{ age }}</h3>
+    <user-data :first-name="firstName" :last-name="lastName" :age="age"></user-data>
     <button @click="setAge">Change Age</button>
     <div>
       <input type="text" placeholder="First Name" v-model="firstName" />
