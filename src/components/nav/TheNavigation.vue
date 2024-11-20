@@ -15,6 +15,9 @@
           <router-link to="/vuex">Vuex</router-link>
         </li>
         <li>
+          <router-link to="/composition-api">Composition API</router-link>
+        </li>
+        <li>
 <!--          <router-link to="/friends">Friends list</router-link>-->
         </li>
       </ul>

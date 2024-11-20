@@ -8,6 +8,7 @@ const FriendsList = () => import("./components/FriendsList.vue");
 const NotFound = () => import("./components/nav/NotFound.vue");
 const AnimationsLayout = () => import("./components/animations/AnimationsLayout.vue");
 const VuexLayout = () => import("./components/vuex/VuexLayout.vue");
+const CompositionApiLayout = () => import("./components/composition/CompositionApiLayout.vue");
 
 const router = createRouter({
   routes: [
@@ -34,6 +35,12 @@ const router = createRouter({
       path: "/vuex",
       components: {
         default: VuexLayout,
+      },
+    },
+    {
+      path: "/composition-api",
+      components: {
+        default: CompositionApiLayout,
       },
     },
     {
