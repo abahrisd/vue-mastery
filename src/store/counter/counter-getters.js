@@ -9,6 +9,9 @@ const counterGetters = {
   finalCounter(state, getters) {
     return state.counter * 2
   },
+  counter(state) {
+    return state.counter;
+  },
   normalizedCounter(state, getters) {
     const finalCounter = getters.finalCounter
 

@@ -2,10 +2,12 @@
 import {reactive, ref, isReactive, isRef, toRefs, computed, provide} from "vue";
 import UserData from "@/components/composition/UserData.vue";
 import {useRoute, useRouter} from "vue-router";
+import TheCounterComp from "@/components/composition/TheCounterComp.vue";
+import ControlCenter from "@/components/composition/ControlCenter.vue";
 
 export default {
   name: "CompositionApiLayout",
-  components: {UserData},
+  components: {ControlCenter, TheCounterComp, UserData},
   props: ['cid'],
   setup(props) {
     // const userName = ref('Samir');
@@ -96,6 +98,11 @@ export default {
       <input type="text" placeholder="Last Name" ref="lastNameInput" />
       <button @click="setLastName">Set Last Name</button>
     </div>
+  </section>
+
+  <section class="cont">
+    <the-counter-comp></the-counter-comp>
+    <control-center></control-center>
   </section>
 </template>
 
