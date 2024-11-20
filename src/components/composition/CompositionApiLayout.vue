@@ -1,11 +1,13 @@
 <script>
 import {reactive, ref, isReactive, isRef, toRefs, computed, provide} from "vue";
 import UserData from "@/components/composition/UserData.vue";
+import {useRoute, useRouter} from "vue-router";
 
 export default {
   name: "CompositionApiLayout",
   components: {UserData},
-  setup() {
+  props: ['cid'],
+  setup(props) {
     // const userName = ref('Samir');
     const userAge = ref(36);
     // const user = ref({
@@ -19,7 +21,7 @@ export default {
 
     const user = reactive({
       name: 'Samir',
-      age: 36,
+      // age: 36,
     });
 
     // setTimeout(() => {
@@ -46,6 +48,22 @@ export default {
 
     provide('userAge', userAge);
 
+
+    // router
+
+    const route = useRoute();
+    const router =  useRouter();
+
+    // const cid = computed(() => props.cid);
+    const cid = computed(() => route.params.cid);
+    const nextCidRoute = computed(() => {
+      return '/composition-api/' + (Number(cid.value) + 1);
+    });
+
+    const goToNextCid = () => {
+      router.push(nextCidRoute.value);
+    };
+
     return {
       // userName: user.value.name,
       // age: user.value.age,
@@ -58,6 +76,9 @@ export default {
       lastName,
       userName,
       lastNameInput,
+      cid,
+      nextCidRoute,
+      goToNextCid,
     };
   }
 }
@@ -65,6 +86,9 @@ export default {
 
 <template>
   <section class="cont">
+    <h2>Route cid is {{cid}}</h2>
+    <button @click="goToNextCid">Go to next cid route</button>
+    <router-link :to="nextCidRoute">Go to next cid route</router-link>
     <user-data :first-name="firstName" :last-name="lastName" ></user-data>
     <button @click="setAge">Change Age</button>
     <div>

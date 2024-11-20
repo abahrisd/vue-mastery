@@ -44,6 +44,13 @@ const router = createRouter({
       },
     },
     {
+      path: "/composition-api/:cid",
+      props: true,
+      components: {
+        default: CompositionApiLayout,
+      },
+    },
+    {
       path: "/back",
       components: {
         default: SurveyLayout,
