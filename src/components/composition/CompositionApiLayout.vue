@@ -30,6 +30,14 @@ export default {
       user.age = 37;
     }
 
+    // inputs
+    const firstName = ref('');
+    const lastName = ref('');
+    const lastNameInput = ref(null);
+    const setLastName = () => {
+      lastName.value = lastNameInput.value.value;
+    }
+
     return {
       // userName: user.value.name,
       // age: user.value.age,
@@ -37,6 +45,10 @@ export default {
       name: userRefs.name,
       age: userRefs.age,
       setAge: setNewAge,
+      setLastName,
+      firstName,
+      lastName,
+      lastNameInput,
     };
 
   }
@@ -45,9 +57,14 @@ export default {
 
 <template>
   <section class="cont">
-    <h2>{{ name }}</h2>
+    <h2>{{ firstName }} {{lastName}}</h2>
     <h3>{{ age }}</h3>
     <button @click="setAge">Change Age</button>
+    <div>
+      <input type="text" placeholder="First Name" v-model="firstName" />
+      <input type="text" placeholder="Last Name" ref="lastNameInput" />
+      <button @click="setLastName">Set Last Name</button>
+    </div>
   </section>
 </template>
 
