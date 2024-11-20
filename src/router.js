@@ -10,6 +10,7 @@ const AnimationsLayout = () => import("./components/animations/AnimationsLayout.
 const VuexLayout = () => import("./components/vuex/VuexLayout.vue");
 const CompositionApiLayout = () => import("./components/composition/CompositionApiLayout.vue");
 const MixinsLayout = () => import("./components/mixins-ccf/MixinsLayout.vue");
+const HooksLayout = () => import("./components/hooks/HooksLayout.vue");
 
 const router = createRouter({
   routes: [
@@ -48,6 +49,12 @@ const router = createRouter({
       path: "/mixins",
       components: {
         default: MixinsLayout,
+      },
+    },
+    {
+      path: "/hooks",
+      components: {
+        default: HooksLayout,
       },
     },
     {

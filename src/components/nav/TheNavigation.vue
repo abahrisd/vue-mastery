@@ -21,6 +21,9 @@
           <router-link to="/mixins">Mixins</router-link>
         </li>
         <li>
+          <router-link to="/hooks">Hooks</router-link>
+        </li>
+        <li>
 <!--          <router-link to="/friends">Friends list</router-link>-->
         </li>
       </ul>
