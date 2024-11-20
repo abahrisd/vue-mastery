@@ -18,6 +18,9 @@
           <router-link :to="'/composition-api/' + 12">Composition API</router-link>
         </li>
         <li>
+          <router-link to="/mixins">Mixins'n'CCF</router-link>
+        </li>
+        <li>
 <!--          <router-link to="/friends">Friends list</router-link>-->
         </li>
       </ul>

@@ -9,6 +9,7 @@ const NotFound = () => import("./components/nav/NotFound.vue");
 const AnimationsLayout = () => import("./components/animations/AnimationsLayout.vue");
 const VuexLayout = () => import("./components/vuex/VuexLayout.vue");
 const CompositionApiLayout = () => import("./components/composition/CompositionApiLayout.vue");
+const MixinsLayout = () => import("./components/mixins-ccf/MixinsLayout.vue");
 
 const router = createRouter({
   routes: [
@@ -41,6 +42,12 @@ const router = createRouter({
       path: "/composition-api",
       components: {
         default: CompositionApiLayout,
+      },
+    },
+    {
+      path: "/mixins",
+      components: {
+        default: MixinsLayout,
       },
     },
     {
