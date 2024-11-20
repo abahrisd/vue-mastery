@@ -1,24 +1,33 @@
 <script>
-import {computed} from "vue";
+import {computed, inject} from "vue";
 
 export default {
   component: 'UserData',
-  props: ['firstName', 'lastName', 'age'],
-  setup(props) {
+  props: ['firstName', 'lastName'],
+  setup(props, context) {
     const userName = computed(() => {
       return props.firstName + ' ' + props.lastName;
     });
 
+    console.log('context',context);
+
+    // context.emit('userData', userName); // same as this.$emit...
+
+    const age = inject('userAge');
+
     return {
       userName,
+      age,
     }
   },
 }
 </script>
 
 <template>
-<h2>{{userName}}</h2>
-<h2>{{age}}</h2>
+  <div>
+    <h2>{{userName}}</h2>
+    <h3>{{age}}</h3>
+  </div>
 </template>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <script>
-import {reactive, ref, isReactive, isRef, toRefs, computed} from "vue";
+import {reactive, ref, isReactive, isRef, toRefs, computed, provide} from "vue";
 import UserData from "@/components/composition/UserData.vue";
 
 export default {
@@ -7,7 +7,7 @@ export default {
   components: {UserData},
   setup() {
     // const userName = ref('Samir');
-    // const age = ref(36);
+    const userAge = ref(36);
     // const user = ref({
     //   name: 'Samir',
     //   age: 36,
@@ -29,7 +29,8 @@ export default {
     const userRefs = toRefs(user);
 
     function setNewAge() {
-      user.age = 37;
+      userAge.value = 37;
+      // user.age = 37;
     }
 
     // inputs
@@ -43,12 +44,14 @@ export default {
       return firstName.value + ' ' + lastName.value;
     });
 
+    provide('userAge', userAge);
+
     return {
       // userName: user.value.name,
       // age: user.value.age,
       user,
       name: userRefs.name,
-      age: userRefs.age,
+      age: userAge.value,
       setAge: setNewAge,
       setLastName,
       firstName,
@@ -62,7 +65,7 @@ export default {
 
 <template>
   <section class="cont">
-    <user-data :first-name="firstName" :last-name="lastName" :age="age"></user-data>
+    <user-data :first-name="firstName" :last-name="lastName" ></user-data>
     <button @click="setAge">Change Age</button>
     <div>
       <input type="text" placeholder="First Name" v-model="firstName" />
